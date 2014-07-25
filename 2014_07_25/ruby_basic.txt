@@ -1,0 +1,90 @@
+What is Ruby?
+	Ruby is an “object oriented” programming language. Almost everything is an object and “everything” evaluates to an
+	object even 0 and nil. This means that you can call “methods” to anything in Ruby and it will evaluate that object.
+
+Functions and Method are different but people use the naming interchangeably.
+	Functions are pieces of code that are called by its name. Data can be passed to the function and can “optionally”
+	return data while “methods” in Ruby always returns a value by default. All data that is passed to a function, is
+	“explicit” while methods are “implicit”.
+
+Enough CS babble... Let's go into the most used data types in Ruby.
+
+String: Like in most programming, string is an array of characters. Hence you can retrieve each character if you'd
+like from a string.
+
+    Example:
+        test_string = 'this is a string'
+
+    How do I know the variable test_string (above) is really a string?
+        Since everything in Ruby evaluates to an object, we can call the method class on the object.
+
+            TRY : test_string.class
+            SHOULD RETURN: String
+
+    Since strings are array of characters, lets grab the second character from this string.
+
+            TRY : test_string[1]
+            SHOULD RETURN: "h"
+
+    In Ruby, double quotes and single quoted are different. Double quoted strings allows you to do string interpolation
+    while whatever is typed in single quotes is as is. Since double quoted strings are interpolated, it utilizes more
+    resources in comparison to single quoted strings.
+
+    What does this mean?
+
+    Example:
+        test = 'bonkers'
+        'this is #{test}'
+        "this is #{test}"
+
+    *Advanced. Try to use only 23 characters in a string for speed related issues due to memory. If your bored and wanting
+    to read: http://patshaughnessy.net/2012/1/4/never-create-ruby-strings-longer-than-23-characters
+
+    Is there that much of a difference in speed?
+
+    TRY:
+        load 'benchwarmer.rb' #if you are not using irb from the directory where benchwarmer.rb is, use the absolute path
+        BenchWarmer.symbol_vs_string_test
+
+
+Symbols: A symbol is almost the same thing as a string except a few differences.
+    - Syntax difference:
+        string_example = 'this is a string'
+        symbol_example = :'this is a symbol'
+
+    - Symbols are immutable.
+
+    - Memory (alloc and dealloc)
+        - When calling a string, the place in memory constantly changes since it never knows if the data inside has
+        changed or not. Symbols memory location will remain since it knows that it is immutable.
+
+    Example:
+        :'this is a symbol'.object_id
+        'this is a string'.object_id
+
+    Run each line 3 times and you will see that the symbol's memory location does not change while the strings
+    memory location constantly changes.
+
+    Is there that much of a difference in speed?
+
+    TRY:
+        load 'benchwarmer.rb' #if you are not using irb from the directory where benchwarmer.rb is, use the absolute path
+        BenchWarmer.symbol_vs_string_test
+
+
+The de facto standard in learning a new language... HELLO WORLD !!!
+
+    puts 'Hello World'
+    puts 'Hello' + ' World'
+    puts 'Hello' + ' ' + 'World'
+
+    def hello(name = 'world')
+      puts "hello #{name}"
+    end
+
+    try:
+        hello
+        hello 'joe'
+        hello :joe
+        hello('joe')
+        hello(:joe)
