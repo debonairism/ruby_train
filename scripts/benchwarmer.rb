@@ -1,7 +1,7 @@
 class BenchWarmer
   require 'benchmark'
 
-  ITERATION = 100_000_000
+  ITERATION = 50_000_000
 
   def self.string_length (test, string)
     test.report("#{string.length + 1} characters" ) do
