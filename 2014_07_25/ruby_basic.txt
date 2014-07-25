@@ -77,6 +77,9 @@ The de facto standard in learning a new language... HELLO WORLD !!!
     puts 'Hello World'
     puts 'Hello' + ' World'
     puts 'Hello' + ' ' + 'World'
+    puts 'Hello' << ' World'
+    puts 'Hello'.concat(' World')
+    puts 'Hello World! ' * 3
 
     def hello(name = 'world')
       puts "hello #{name}"
@@ -88,3 +91,45 @@ The de facto standard in learning a new language... HELLO WORLD !!!
         hello :joe
         hello('joe')
         hello(:joe)
+
+Lets take a look at some methods related with strings...
+    length --> as you can guess, this returns the length of the string.
+        TRY: 'this is a test'.length
+        SHOULD RETURN: 14
+
+    include? --> returns a boolean if the parameter entered is inside the string
+        TRY: 'this sentence is obscenely long and is created for test purposes'.include? 'long'
+        SHOULD RETURN: true
+
+    start_with? --> returns a boolean if the string STARTS with the entered parameter
+        TRY: 'this sentence is obscenely long and is created for test purposes'.start_with? 'th'
+        SHOULD RETURN: true
+
+    end_with? --> returns a boolean if the string ENDS with the entered parameter
+         TRY: 'this sentence is obscenely long and is created for test purposes'.end_with? 'ses'
+         SHOULD RETURN: true
+
+    CASE CHANGES
+        - downcase --> converts the string to lowercase
+        - upcase --> converts the string to uppercase
+        - swapcase --> swaps the cases around
+        - capitalize --> the first character of the string is converted to uppercase and the remainder to lowercase.
+
+    - Lets split strings up by spaces
+        TRY: 'this sentence is obscenely long and is created for test purposes'.split
+        SHOULD RETURN: ["this", "sentence", "is", "obscenely", "long", "and", "is", "created", "for", "test", "purposes"]
+
+    - If you add a parameter to the method split, you can split the object by the entered character
+        TRY: 'this sentence is obscenely long and is created for test purposes'.split('s')
+        SHOULD RETURN: ["thi", " ", "entence i", " ob", "cenely long and i", " created for te", "t purpo", "e"]
+
+    - Lets replace some strings :)
+        - substitute the FIRST occurrence from the string
+        TRY: 'I want to write this test when I have some time available'.sub('I', 'We')
+        SHOULD RETURN: "We want to write this test when I have some time available"
+
+        - substitute ALL the occurrence from the string
+        TRY: 'I want to write this test when I have some time available'.gsub('I', 'We')
+        SHOULD RETURN: "We want to write this test when We have some time available"
+
+        - regex can be used as well
