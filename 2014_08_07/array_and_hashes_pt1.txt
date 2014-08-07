@@ -1,0 +1,105 @@
+Array and Hashes 
+
+- Both array and hashes are:  
+  - Indexed collections which are used to store objects that are accessible by using a key  
+  - Able to hold objects of different types. IE: 
+    - string, symbols, arrays, hashes, etc...
+  
+- In array: 
+  - key is an integer
+  - more efficient/resource friendly in retrieving data 
+  - created and initialized using square brackets --> [ ]
+  
+- In hash:
+  - key is any object as a key
+  - flexibile in retrieving data
+    - usually, the key used in hashes are a symbol/string
+  - created and initialized using braces --> { }
+  
+Lets first start by playing around with arrays :)
+  - here are the possible ways to instantiate a new array 
+  
+  Examples:
+    []                            --> []
+    Array.new                     --> []
+    Array.new(3)                  --> [nil, nil, nil]
+    Array.new(3, true)            --> [true, true, true]
+    Array.new(3, Array.new(3))    --> guess what this will do !!! 
+  
+  - As we can see, there are many ways of instantiating a new array with or without objects inside the array
+  
+- Since we know how to make a new array, lets pass in some data since a collection of like data is the purpose of arrays
+  
+  Examples:
+    numbers = [1,2,3,4,5,6,7]     --> [1, 2, 3, 4, 5, 6, 7]
+    numbers << 8                  --> [1, 2, 3, 4, 5, 6, 7, 8]
+    numbers.push(9)               --> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    numbers.insert(10, 10)        --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    numbers.unshift(0)            --> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    
+  Explanations:
+    - the method '<<' and 'push' both appends the given object to the end of the array that its being passed to
+    - the method 'insert', inserts the given object before the element that its being passed to inser(index, object)
+    - the method 'unshift' will add a new item to the start of an array
+    
+- Lets say from the array 'numbers' that we created before, we want to remove some element, how do we do this?
+  
+  Examples: 
+    numbers = [1,2,3,3,3,3,4,10]    --> 1, 2, 3, 3, 3, 3, 4, 10]
+    numbers.pop                     --> 10
+          -- check the value of numbers now --
+    numbers.shift                   --> 1
+          -- check the value of numbers now -- 
+    numbers.delete_at(3)            --> 3      
+          -- check the value of numbers now --
+    numbers.delete(3)               --> 3
+          -- check the value of numbers now --
+      
+  Explanations:
+    - pop and shift are used to access the last element or the first element
+      - anyone heard of LIFO or FIFO? Queueing theory? How does pop and shift correlate with this?
+    - the method 'delete_at(param)' will delete the element at the particular index passed to this method
+    - the method 'delete(params)' allows it to search the array, and delete the element in the array
+    
+- Lets now access the data inside the array
+  
+  Examples: 
+    numbers = [1,2,3,4,5,6]       --> [1, 2, 3, 4, 5, 6]
+    numbers[2]                    --> 3
+    numbers[-2]                   --> 5
+    numbers[2,3]                  --> [3, 4, 5]
+    numbers[1..4]                 --> [2, 3, 4, 5]
+    numbers[1..-3]                --> [2, 3, 4]
+    numbers.first                 --> 1
+    numbers.last                  --> 6
+    numbers.take(3)               --> [1, 2, 3]
+    numbers.drop(3)               --> [4, 5, 6]
+
+  Explanations:
+    
+    
+There are tons and tons of different methods utilized with Arrays
+  - without telling you the meaning or explanation lets try to guess what the following method does:
+  empty?
+  flatten
+  first
+  include?
+  last
+  length
+  reverse
+  rotate
+  sort
+  uniq    
+    
+- Array of Array's aka multi-dimensional arrays
+
+If you really want to do some complicated mathematical computations you can use matricies. 
+  - "The Matrix is the world that has been pulled over your eyes to blind you from the truth."
+  
+  require 'matrix'
+  matrix = Matrix[[1,2,3],[4,5,6],[7,8,9]]
+    
+  |1, 2, 3|
+  |4, 5, 6|
+  |7, 8, 9|
+ 
