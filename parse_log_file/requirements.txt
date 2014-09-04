@@ -1,0 +1,14 @@
+From the terminal, install the following using the command
+    - gem install mime/types
+    - gem install terminal-table
+
+First line of the file, 'parse_log_file.rb' needs to be location of your local copy of Ruby installation
+    - default for UNIX based OS is #!/usr/bin/env ruby
+
+To execute the script:
+    - UNIX based OS:
+        - chmod
+        - ./parse_log_file.rb
+
+    - Windows
+        - ruby parse_log_file.rb
