@@ -1,0 +1,112 @@
+To learn more about the basics difference and similarities with other source control, check out:
+  - http://git-scm.com/book/en/Getting-Started-Git-Basics
+
+First and foremost, lets start with installing Git located here:
+  - http://git-scm.com/download
+
+Now that you have installed Git, lets utilize GitHub for some awesome UI and a place our repository
+  - set up a GitHub account here:
+    - https://github.com/
+  - after registering for GitHub, we will also add an SSH Key for ease and convenience
+    - (don't need to constantly retype your username/password)
+    - Here are some instructions on how to create an SSH key
+      - For Mac go to:
+        - https://help.github.com/articles/generating-ssh-keys#platform-mac
+      - For Windows go to:
+        - https://help.github.com/articles/generating-ssh-keys#platform-windows
+        *The commands found on this page will work only using Git Bash which we just installed from the download section
+      - For Linux go to:
+        - https://help.github.com/articles/generating-ssh-keys#platform-linux
+
+    - Once you have set up an ssh key, we are now able to let GitHub know
+      - go to:
+        - https://github.com/settings/ssh and place the title and ssh key of your machine
+
+  - Now we are good to go and set up our configuration for Git
+    * The reason why we add your name and email to the configuration is because when we commit or push new code
+      to the repository, we would like to know your name and email account associated with the person
+
+    - Lets add your name to the Git global setting
+      - git config --global user.name "Your Name"
+    - Lets add your email to the Git global setting
+      - git config --global user.email yourname@example.com
+
+    - Lets check now to see if Git configuration has been set up correctly
+      - git config --list
+        - the first two lines should read w/ your corresponding information
+          - user.name
+          - user.email
+
+    - Once that has all been set up, we may proceed on making a directory a Git repository by running:
+      - git init
+      - as soon as you run this command, the output should read:
+        - Initialized empty Git repository in $directory_location
+
+      - something not necessary but good to have is add a file inside the current directory
+        - touch .gitignore
+        - the file .gitignore , is a file for git to know not to track
+          - Here might be some use cases of why not to track files:
+            - For username/password
+            - For DB configuration
+            - Company sensitive information
+            - Maybe you just want to hide it (Black Ops StyleS --> BOSS)
+
+      - So now lets check out how Git does version control
+        - lets make a new file and put something inside
+        - vim test.rb
+          - PUT SOMETHING INSIDE THIS FILE
+
+      - now check to see if there has been any changes to this repository
+        - git status
+
+        Since this is our very first commit, it will say 'Initial Commit'
+        Below that, we should see the 'Untracked Files' with the two files:
+          - .gitignore
+          - test.rb
+
+        This means that these two files has been updated/changed
+          - if we want to commit these changes, we have to 'track' them
+          - we do this by adding the files we want like so:
+            - git add 'FILE NAME'           --> single file
+            - git add .                     --> track all files
+
+          - lets say we made a mistake and dont want to track a file, we can:
+            - git rm --cached 'FILE NAME'   --> single file
+            - git rm -rf --cached .         --> untrack all files
+
+        However, for this test case and example, lets track all the files and commit them
+          - git add .
+          - there are two main option for committing
+            - git commit
+              - it will open up your default editor (terminal) to add the message in
+            - git commit -m "YOUR MESSAGE THAT YOU WOULD LIKE TO COMMIT THIS WITH"
+          - if no message is passed, the commit will abort and you wont be able to commit
+            - the message is to describe what the changes/update is about (similar to commenting)
+          - after you have committed the changes, lets check if commit is present by:
+            - git log
+            - this will populate the user.name, user.email, date when committed, the message entered and checksum
+              - checksum is a built in functionality of Git
+                - it utilizes SHA-1 hash to do a check sum based on the content of a file or directory
+                - this makes it impossible to make changes without Git knowing about it
+
+        Another setting that needs to be done is remote location (GitHub location)
+          - this is not necessarily the names that you have to use, but most people in the community does it this way
+            - upstream
+              - generally the repository where it has been forked (copied) from
+              - usually this would be the location of production codebase
+            - origin
+              - is the location of your copy of the forked repository
+
+          - How do you fork a repository?
+            - Very simply, go to the repository and click on the top right 'Fork'
+            - This will make a copy of the repository inside your GitHub account
+              - Go to https://github.com/debonairism/ruby_train and click on 'Fork'
+              - Click the refresh button and you should see that it has been moved to your repository
+
+          - So now, lets add remote
+            - git remote add origin git@github.com:$YOUR_GITHUB_ACCOUNT/ruby_train.git
+            - git remote add upstream git@github.com:debonairism/ruby_train.git
+            - to check the remote setting:
+              - git remote -v
+
+
